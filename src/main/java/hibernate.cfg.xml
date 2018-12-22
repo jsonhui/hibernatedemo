@@ -12,5 +12,6 @@
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/testdatabase</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">yuanke1992</property>
+		<mapping class="com.jason.hibernatedemo.PersonDTO" />
 	</session-factory>
 </hibernate-configuration>

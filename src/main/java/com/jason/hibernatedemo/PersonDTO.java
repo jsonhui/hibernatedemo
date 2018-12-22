@@ -1,9 +1,23 @@
 package com.jason.hibernatedemo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tb_person")
 public class PersonDTO {
+	@Id
+	@Column(name = "p_id")
 	private Integer id;
+	@Column(name = "p_name")
 	private String name;
+	@Column(name = "p_money")
 	private String money;
+
+	public PersonDTO() {
+	}
 
 	public Integer getId() {
 		return id;
@@ -27,6 +41,11 @@ public class PersonDTO {
 
 	public void setMoney(String money) {
 		this.money = money;
+	}
+
+	@Override
+	public String toString() {
+		return "PersonDTO [id=" + id + ", name=" + name + ", money=" + money + "]";
 	}
 
 }
