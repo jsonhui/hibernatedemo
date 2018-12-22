@@ -1,38 +1,23 @@
 package com.jason.hibernatedemo;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
-import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 /**
  * Unit test for simple App.
  */
 public class AppTest extends TestCase {
-	/**
-	 * Create the test case
-	 *
-	 * @param testName
-	 *            name of the test case
-	 */
-	public AppTest(String testName) {
-		super(testName);
-	}
-
-	/**
-	 * @return the suite of tests being tested
-	 */
-	public static Test suite() {
-		return new TestSuite(AppTest.class);
-	}
 
 	/**
 	 * Rigourous Test :-)
 	 */
-	public void testApp() {
+	public void testGetPerson() {
 
 		Configuration configuration = new Configuration().configure();
 
@@ -43,6 +28,26 @@ public class AppTest extends TestCase {
 		PersonDTO person = session.get(PersonDTO.class, 1);
 
 		System.out.println(person.toString());
+
+		session.close();
+
+	}
+
+	public void testGetAll() {
+
+		Configuration configuration = new Configuration().configure();
+
+		SessionFactory sessionFactory = configuration.buildSessionFactory();
+
+		Session session = sessionFactory.openSession();
+
+		Query query = session.createQuery("from PersonDTO");
+
+		List<PersonDTO> datas = query.getResultList();
+
+		for (PersonDTO personDTO : datas) {
+			System.out.println(personDTO.toString());
+		}
 
 		session.close();
 
