@@ -5,17 +5,12 @@ Hibernate的配置详解
 
     核心配置文件——hibernate.cfg.xml(主要描述Hibernate的相关配置)
     映射配置文件——xxx.hbm.xml
-
 核心配置文件
-
 Hibernate的核心配置文件，即hibernate.cfg.xml，主要用来描述Hibernate的相关配置。对于Hibernate的核心配置文件它有两种方式：
-
     hibernate.cfg.xml
     hibernate.properties
-
 我们在开发中使用比较多的是hibernate.cfg.xml这种方式，原因是它的配置能力更强，并且易于修改。所以我主要讲解的是hibernate.cfg.xml这种配置方式。
 我以《Hibernate快速入门》一文案例中的hibernate.cfg.xml核心配置文件为例进行讲解。
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC
     "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
@@ -27,7 +22,6 @@ Hibernate的核心配置文件，即hibernate.cfg.xml，主要用来描述Hibern
         <property name="hibernate.connection.url">jdbc:mysql:///hibernateTest</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">yezi</property>
-
         <!-- 可以将向数据库发送的SQL语句显示出来 -->
         <property name="hibernate.show_sql">true</property>
         <!-- 格式化SQL语句 -->
@@ -41,17 +35,13 @@ Hibernate的核心配置文件，即hibernate.cfg.xml，主要用来描述Hibern
 </hibernate-configuration>
 
 可将以上配置文件的内容分为3部分来看待：
-
     加载数据库相关信息
-
     <!-- 配置关于数据库连接的四个项：driverClass  url username password -->
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql:///hibernateTest</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">yezi</property>
-
     Hibernate的相关配置
-
     <!-- 可以将向数据库发送的SQL语句显示出来 -->
     <property name="hibernate.show_sql">true</property>
     <!-- 格式化SQL语句 -->
@@ -71,7 +61,6 @@ Hibernate的核心配置文件，即hibernate.cfg.xml，主要用来描述Hibern
 #hibernate.hbm2ddl.auto create
 #hibernate.hbm2ddl.auto update
 #hibernate.hbm2ddl.auto validate
-
 那么hibernate.hbm2ddl.auto这个属性到底是个什么东东昵？这儿我就来详解讲讲。先说结论：配置这个属性后，我们可以进行表的自动创建。该属性有4个取值：
 
     create-drop
@@ -83,8 +72,6 @@ Hibernate的核心配置文件，即hibernate.cfg.xml，主要用来描述Hibern
 
     <!-- 自动创建表 -->
     <property name="hibernate.hbm2ddl.auto">create</property>
- 
-
     然后执行单元测试类——HibernateTest1.java中的saveCustomerTest()方法：
 
     public class HibernateTest1 {
@@ -103,10 +90,8 @@ Hibernate的核心配置文件，即hibernate.cfg.xml，主要用来描述Hibern
             Session session = sessionFactory.openSession(); // 相当于得到一个Connection
             // 开启事务
             Transaction transaction = session.beginTransaction();
-
             // 操作
             session.save(c);
-
             // 事务提交
             // session.getTransaction().commit();
             transaction.commit();
@@ -228,9 +213,7 @@ Hibernate的核心配置文件，即hibernate.cfg.xml，主要用来描述Hibern
        
 
     最后测试单元测试类——HibernateTest1.java中的saveCustomerTest()方法：
-
     public class HibernateTest1 {
-
         // 保存一个Customer
         @Test
         public void saveCustomerTest() {
@@ -259,8 +242,6 @@ Hibernate的核心配置文件，即hibernate.cfg.xml，主要用来描述Hibern
 
         ......
     }
-      
-
     查看t_customer表可发现：
     这里写图片描述
     这已说明了如果映射不匹配，会自动更新表结构。但是注意：只能添加，不能说我这个表里面有3个字段，我映射2个了，然后它就帮我删了，这是不行的！
@@ -271,8 +252,6 @@ Hibernate的核心配置文件，即hibernate.cfg.xml，主要用来描述Hibern
 
     <!-- 自动创建表 -->
     <property name="hibernate.hbm2ddl.auto">validate</property>
-        1
-        2
 
     这时运行单元测试类——HibernateTest1.java中的saveCustomerTest()方法，会发现如下异常：
 
@@ -342,8 +321,6 @@ Hibernate的核心配置文件，即hibernate.cfg.xml，主要用来描述Hibern
             ......
         </class>
     </hibernate-mapping>
-       
-
     首先该标签必须存在。<id>是用于建立类中的属性与表中的主键映射。
         name：类中的属性名称
         column：表中的主键名称，column也可以省略，这时列名就与类中属性名称一致
@@ -360,9 +337,7 @@ Hibernate的核心配置文件，即hibernate.cfg.xml，主要用来描述Hibern
     Java中的数据类型
     Hibernate中的数据类型
     SQL的数据类型
-
 可参考下表：
-
 那么我实体类(Customer.java)的映射配置文件可以写为：
 
 <?xml version="1.0" encoding="UTF-8"?>
