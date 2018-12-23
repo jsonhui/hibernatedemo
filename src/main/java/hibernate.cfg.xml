@@ -13,6 +13,10 @@
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/testdatabase</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">yuanke1992</property>
-		<mapping class="com.jason.hibernatedemo.bean.PersonDTO" />
+		<!--  下面的这种写法是注解的写法 -->
+		<!-- <mapping class="com.jason.hibernatedemo.bean.PersonDTO" /> -->
+		<!-- 这种写法是配置文件的写法 -->
+		<mapping resource="com/jason/hibernatedemo/bean/author.hbm.xml" />
+
 	</session-factory>
 </hibernate-configuration>

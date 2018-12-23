@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
+import com.jason.hibernatedemo.bean.Author;
 import com.jason.hibernatedemo.bean.PersonDTO;
 
 import junit.framework.TestCase;
@@ -31,6 +32,24 @@ public class AppTest extends TestCase {
 		PersonDTO person = session.get(PersonDTO.class, 1);
 
 		System.out.println(person.toString());
+
+		session.close();
+
+	}
+
+	public void testGetAllForAuthor() {// 获取所有作者数据
+
+		Session session = sessionFactory.openSession();
+
+		Query query = session.createQuery("from Author");
+
+		List<Author> datas = query.getResultList();
+
+		for (Author author : datas) {
+
+			System.out.println(author.toString());
+
+		}
 
 		session.close();
 
