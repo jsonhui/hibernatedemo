@@ -16,28 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tb_person`
+-- Table structure for table `tb_user`
 --
 
-DROP TABLE IF EXISTS `tb_person`;
+DROP TABLE IF EXISTS `tb_user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `tb_person` (
+CREATE TABLE `tb_user` (
   `p_id` int(11) NOT NULL AUTO_INCREMENT,
-  `p_money` varchar(10) DEFAULT NULL,
   `p_name` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`p_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=301 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tb_person`
+-- Dumping data for table `tb_user`
 --
 
-LOCK TABLES `tb_person` WRITE;
-/*!40000 ALTER TABLE `tb_person` DISABLE KEYS */;
-INSERT INTO `tb_person` VALUES (1,'9000','lily'),(2,'11000','jason'),(3,'2000','王五'),(4,'1000','王五'),(5,'1000','王五'),(6,'1000','王五'),(7,'1000','王五'),(8,'1000','王五');
-/*!40000 ALTER TABLE `tb_person` ENABLE KEYS */;
+LOCK TABLES `tb_user` WRITE;
+/*!40000 ALTER TABLE `tb_user` DISABLE KEYS */;
+INSERT INTO `tb_user` VALUES (3,'王五'),(4,'张三');
+/*!40000 ALTER TABLE `tb_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
