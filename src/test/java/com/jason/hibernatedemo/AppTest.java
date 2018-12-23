@@ -1,5 +1,6 @@
 package com.jason.hibernatedemo;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -168,4 +169,41 @@ public class AppTest extends TestCase {
 		session.close();
 
 	}
+	
+	
+	public void testAddAuthor() {// 增加作者
+
+		Session session = sessionFactory.openSession();
+
+		Author author = new Author();
+
+		author.setName("谷姐");
+		
+		Book book1 = new Book();
+		
+		book1.setName("梦里花落知多少");
+		
+		Book book2 = new Book();
+		
+		book2.setName("梦里梦外");
+		
+		Set<Book> books = new HashSet<Book>();
+		
+		books.add(book1);
+		
+		books.add(book2);
+		
+		author.setBooks(books);
+
+		Transaction transaction = session.beginTransaction();// 开启事务
+
+		session.save(author);
+
+		transaction.commit();// 事务提交
+
+		session.close();
+
+	}
+	
+	
 }
