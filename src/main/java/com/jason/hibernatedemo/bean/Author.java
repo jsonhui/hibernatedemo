@@ -1,9 +1,12 @@
 package com.jason.hibernatedemo.bean;
 
+import java.util.Set;
+
 public class Author {
 
 	private Integer id;
 	private String name;
+	private Set<Book> books;
 
 	public Author() {
 	}
@@ -11,6 +14,14 @@ public class Author {
 	public Author(Integer id, String name) {
 		this.id = id;
 		this.name = name;
+	}
+
+	public Set<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(Set<Book> books) {
+		this.books = books;
 	}
 
 	public Integer getId() {

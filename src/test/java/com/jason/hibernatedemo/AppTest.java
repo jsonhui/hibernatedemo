@@ -1,6 +1,7 @@
 package com.jason.hibernatedemo;
 
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -33,6 +34,26 @@ public class AppTest extends TestCase {
 		PersonDTO person = session.get(PersonDTO.class, 1);
 
 		System.out.println(person.toString());
+
+		session.close();
+
+	}
+
+	public void testGetAuthor() {// 得到单个作者
+
+		Session session = sessionFactory.openSession();
+
+		Author author = session.get(Author.class, 1);
+
+		System.out.println(author.getName());
+
+		Set<Book> books = author.getBooks();
+
+		for (Book book : books) {
+
+			System.out.println(book);
+
+		}
 
 		session.close();
 

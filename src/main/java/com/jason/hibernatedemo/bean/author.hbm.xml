@@ -9,6 +9,10 @@
 			<generator class="native"></generator>
 		</id>
 		<property name="name" column="author_name" type="java.lang.String"></property>
+		<set name="books">
+			<key column="book_author_id"></key>
+			<one-to-many class="com.jason.hibernatedemo.bean.Book"></one-to-many>
+		</set>
 	</class>
 
 </hibernate-mapping>
