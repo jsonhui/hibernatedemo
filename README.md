@@ -340,7 +340,7 @@ Hibernate的核心配置文件，即hibernate.cfg.xml，主要用来描述Hibern
 可参考下表：
 那么我实体类(Customer.java)的映射配置文件可以写为：
 
-<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC 
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
@@ -350,21 +350,21 @@ Hibernate的核心配置文件，即hibernate.cfg.xml，主要用来描述Hibern
         table：映射到数据库里面的那个表的名称
         catalog：数据库的名称
      -->
-    <class name="Customer" table="t_customer" catalog="hibernateTest">
+   <!-- <class name="Customer" table="t_customer" catalog="hibernateTest">-->
         <!-- class下必须要有一个id的子元素 -->
         <!-- id是用于描述主键的 -->
-        <id name="id" column="id" type="int"> <!-- java数据类型 -->
+        <!--<id name="id" column="id" type="int"> <!-- java数据类型 -->
             <!-- 主键生成策略 -->
-            <generator class="native"></generator>
-        </id>
+          <!--  <generator class="native"></generator>
+        </id>-->
         <!-- 
             使用property来描述属性与字段的对应关系
             如果length忽略不写，且你的表是自动创建这种方案，那么length的默认长度是255
         -->
-        <property name="name" column="name" length="20" type="string"></property> <!-- Hibernate数据类型 -->
-        <property name="address">
-            <column name="address" length="50" sql-type="varchar(50)"></column> <!-- SQL的数据类型 -->
-        </property>
+       <!-- <property name="name" column="name" length="20" type="string"></property> <!-- Hibernate数据类型 -->
+       <!-- <property name="address">
+           <!-- <column name="address" length="50" sql-type="varchar(50)"></column> <!-- SQL的数据类型 -->
+       <!-- </property>
         <property name="sex" column="sex" length="20"></property>
     </class>
-</hibernate-mapping>
+</hibernate-mapping>-->
