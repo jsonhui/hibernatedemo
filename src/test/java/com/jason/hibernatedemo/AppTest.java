@@ -1,10 +1,10 @@
 package com.jason.hibernatedemo;
 
-import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
@@ -22,10 +22,7 @@ public class AppTest extends TestCase {
 
 	}
 
-	/**
-	 * Rigourous Test :-)
-	 */
-	public void testGetPerson() {
+	public void testGetPerson() {// 得到单个数据
 
 		Session session = sessionFactory.openSession();
 
@@ -37,7 +34,7 @@ public class AppTest extends TestCase {
 
 	}
 
-	public void testGetAll() {
+	public void testGetAll() {// 获取所有数据
 
 		Session session = sessionFactory.openSession();
 
@@ -55,15 +52,57 @@ public class AppTest extends TestCase {
 
 	}
 
-	public void testAdd() {
+	public void testAdd() {// 增加数据
 
 		Session session = sessionFactory.openSession();
 
-		PersonDTO dto = new PersonDTO("王五", "1000");
+		PersonDTO dto = new PersonDTO(300, "王五", "1200");
 
-		Serializable i = session.save(dto);
+		Transaction transaction = session.beginTransaction();// 当没有添加自增长的时候需要开启事务
 
-		System.out.println(i + "");
+		session.saveOrUpdate(dto);// Serializable i = session.save(dto);
+
+		transaction.commit();// 事务提交// System.out.println(i + "");
+
+		session.close();
+
+	}
+
+	public void testDelete() {// 删除数据
+
+		Session session = sessionFactory.openSession();
+
+		PersonDTO dto = new PersonDTO();
+
+		dto.setId(300);
+
+		Transaction transaction = session.beginTransaction();// 开启事务
+
+		session.delete(dto);
+
+		transaction.commit();// 事务提交
+
+		session.close();
+
+	}
+
+	public void testUpdate() {// 修改数据
+
+		Session session = sessionFactory.openSession();
+
+		PersonDTO dto = new PersonDTO();
+
+		dto.setId(3);
+
+		dto.setName("王五");
+
+		dto.setMoney("2000");
+
+		Transaction transaction = session.beginTransaction();// 开启事务
+
+		session.update(dto);
+
+		transaction.commit();// 事务提交
 
 		session.close();
 
