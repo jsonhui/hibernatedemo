@@ -362,7 +362,7 @@ Hibernate的核心配置文件，即hibernate.cfg.xml，主要用来描述Hibern
     SQL的数据类型
 
 可参考下表：
-这里写图片描述
+
 那么我实体类(Customer.java)的映射配置文件可以写为：
 
 <?xml version="1.0" encoding="UTF-8"?>
