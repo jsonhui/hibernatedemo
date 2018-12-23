@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.jason.hibernatedemo.bean.Book" table="tb_book">
+		<id name="id" column="book_id" type="java.lang.Integer">
+			<generator class="native"></generator>
+		</id>
+		<property name="name" column="book_name" type="java.lang.String"></property>
+		<many-to-one name="author" column="book_author_id"
+			class="com.jason.hibernatedemo.bean.Author"></many-to-one>
+	</class>
+
+</hibernate-mapping>

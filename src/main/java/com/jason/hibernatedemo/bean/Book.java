@@ -4,15 +4,23 @@ public class Book {
 
 	private Integer id;
 	private String name;
-	private Integer athorName;
+	private Author author;
 
 	public Book() {
 	}
 
-	public Book(Integer id, String name, Integer athorName) {
+	public Book(Integer id, String name, Author author) {
 		this.id = id;
 		this.name = name;
-		this.athorName = athorName;
+		this.author = author;
+	}
+
+	public Author getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(Author author) {
+		this.author = author;
 	}
 
 	public Integer getId() {
@@ -31,17 +39,9 @@ public class Book {
 		this.name = name;
 	}
 
-	public Integer getAthorName() {
-		return athorName;
-	}
-
-	public void setAthorName(Integer athorName) {
-		this.athorName = athorName;
-	}
-
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", name=" + name + ", athorName=" + athorName + "]";
+		return "Book [id=" + id + ", name=" + name + ", author=" + author + "]";
 	}
 
 }
