@@ -8,6 +8,8 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
+import com.jason.hibernatedemo.bean.PersonDTO;
+
 import junit.framework.TestCase;
 
 /**

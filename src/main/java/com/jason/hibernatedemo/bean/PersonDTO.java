@@ -1,4 +1,4 @@
-package com.jason.hibernatedemo;
+package com.jason.hibernatedemo.bean;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
