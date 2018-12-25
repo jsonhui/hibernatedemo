@@ -18,7 +18,7 @@
 		<!-- set表示的是一个set集合 -->
 		<!-- name是集合的名称 -->
 		<!-- cascade配置级联操作，save-update表示在进行新增和删除的时候进行级联操作 -->
-		<set name="books" cascade="save-update">
+		<set name="books" cascade="all">
 			<!-- 一对多中的外健 -->
 			<key column="book_author_id"></key>
 			<!-- 配置多的一方的Javabean对象 -->
