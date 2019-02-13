@@ -13,6 +13,7 @@ import org.hibernate.query.Query;
 import com.jason.hibernatedemo.bean.Author;
 import com.jason.hibernatedemo.bean.Book;
 import com.jason.hibernatedemo.bean.PersonDTO;
+import com.jason.hibernatedemo.bean.User;
 
 import junit.framework.TestCase;
 
@@ -20,44 +21,59 @@ import junit.framework.TestCase;
  * Unit test for simple App.
  */
 public class AppTest extends TestCase {
+	
 	private static SessionFactory sessionFactory;
+	
 	static {
+		
 		Configuration configuration = new Configuration().configure();
-
+		
 		sessionFactory = configuration.buildSessionFactory();
-
+		
 	}
 
 	public void testGetPerson() {// 得到单个数据
-
+		
 		Session session = sessionFactory.openSession();
-
+		
 		PersonDTO person = session.get(PersonDTO.class, 1);
-
+		
 		System.out.println(person.toString());
-
+		
 		session.close();
-
+		
+	}
+	
+public void testGetUser() {// 得到单个用户
+		
+		Session session = sessionFactory.openSession();
+		
+		User author = session.get(User.class, 2);
+		
+		System.out.println(author.getName());
+		
+		session.close();
+		
 	}
 
 	public void testGetAuthor() {// 得到单个作者
-
+		
 		Session session = sessionFactory.openSession();
-
+		
 		Author author = session.get(Author.class, 1);
-
+		
 		System.out.println(author.getName());
-
+		
 		Set<Book> books = author.getBooks();
-
+		
 		for (Book book : books) {
-
+			
 			System.out.println(book);
-
+			
 		}
-
+		
 		session.close();
-
+		
 	}
 
 	public void testGetAllForBook() {// 获取所有书数据

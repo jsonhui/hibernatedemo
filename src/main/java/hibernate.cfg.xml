@@ -18,6 +18,7 @@
 		<!-- 这种写法是配置文件的写法 -->
 		<mapping resource="com/jason/hibernatedemo/bean/author.hbm.xml" />
 		<mapping resource="com/jason/hibernatedemo/bean/book.hbm.xml" />
-
+		<mapping resource="com/jason/hibernatedemo/bean/user.hbm.xml" />
+		
 	</session-factory>
 </hibernate-configuration>
